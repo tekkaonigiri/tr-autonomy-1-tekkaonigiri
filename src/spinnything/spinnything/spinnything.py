@@ -9,8 +9,8 @@ from spinnything.util import draw_circle_and_points
 from std_msgs.msg import Float64MultiArray
 
 CIRCLE_PERIOD = 10
-TERM_REFRESH_PERIOD = .02
-MEASURED_PUBLISH_PERIOD = 2
+TERM_REFRESH_PERIOD = 1/60
+MEASURED_PUBLISH_PERIOD = 1.5
 
 screen = curses.initscr()
 
@@ -67,6 +67,7 @@ class CirclePrinter(Node):
 
     def predicted_pos_callback(self, msg: Float64MultiArray):
         self.coord2 = CENTER + (CIRCLERADIUS * (np.array([msg.data[0], msg.data[1]])))
+        self.update()
 
 
 def main(args=None):
