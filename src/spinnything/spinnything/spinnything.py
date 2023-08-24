@@ -14,11 +14,13 @@ MEASURED_PUBLISH_PERIOD = 2
 
 screen = curses.initscr()
 
-SIZE = min(curses.COLS, curses.LINES)
-if (SIZE % 2 == 0):
-    SIZE -= 1
-HALFWAY = (SIZE - 1) / 2
+SCREENSIZE = min(curses.COLS, curses.LINES)
+if SCREENSIZE % 2 == 0:
+    SCREENSIZE -= 1
+HALFWAY = (SCREENSIZE - 1) / 2
 CENTER = np.array([HALFWAY, HALFWAY])
+
+CIRCLERADIUS = int(SCREENSIZE * .4)
 
 
 class CirclePrinter(Node):
@@ -45,7 +47,7 @@ class CirclePrinter(Node):
         self.timer += 1
 
     def compute_coord1(self) -> np.ndarray:
-        return CENTER + (HALFWAY * self.compute_pos())
+        return CENTER + (CIRCLERADIUS * self.compute_pos())
 
     def compute_pos(self) -> np.ndarray:
         return np.array([np.cos(self.theta), np.sin(self.theta)])
@@ -64,7 +66,7 @@ class CirclePrinter(Node):
         self.velpublisher.publish(velmsg)
 
     def predicted_pos_callback(self, msg: Float64MultiArray):
-        self.coord2 = CENTER + (HALFWAY * (np.array([msg.data[0], msg.data[1]])))
+        self.coord2 = CENTER + (CIRCLERADIUS * (np.array([msg.data[0], msg.data[1]])))
 
 
 def main(args=None):
