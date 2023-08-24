@@ -76,7 +76,7 @@ def main(args=None):
         try:
             printer.update()
             rclpy.spin_once(printer, timeout_sec=TERM_REFRESH_PERIOD)
-        except KeyboardInterrupt:
+        except BaseException:
             curses.nocbreak()
             curses.echo()
             curses.endwin()
