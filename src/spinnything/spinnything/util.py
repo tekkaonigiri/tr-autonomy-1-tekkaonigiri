@@ -5,7 +5,7 @@ from numpy.linalg import norm
 
 
 def draw_circle_and_points(screen, point1: np.ndarray, point2: np.ndarray) -> None:
-    SCREENSIZE = min(curses.COLS, curses.LINES)
+    SCREENSIZE = min(int(curses.COLS / 2), curses.LINES)
     if SCREENSIZE % 2 == 0:
         SCREENSIZE -= 1
     HALFWAY = (SCREENSIZE - 1) / 2

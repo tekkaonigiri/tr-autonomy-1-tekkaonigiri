@@ -9,12 +9,12 @@ from spinnything.util import draw_circle_and_points
 from std_msgs.msg import Float64MultiArray
 
 CIRCLE_PERIOD = 10
-TERM_REFRESH_PERIOD = 1/60
+TERM_REFRESH_PERIOD = 1 / 60
 MEASURED_PUBLISH_PERIOD = 1.5
 
 screen = curses.initscr()
 
-SCREENSIZE = min(curses.COLS, curses.LINES)
+SCREENSIZE = min(int(curses.COLS / 2), curses.LINES)
 if SCREENSIZE % 2 == 0:
     SCREENSIZE -= 1
 HALFWAY = (SCREENSIZE - 1) / 2
@@ -77,8 +77,8 @@ def main(args=None):
         try:
             printer.update()
             rclpy.spin_once(printer, timeout_sec=TERM_REFRESH_PERIOD)
-        except BaseException:
+        except BaseException as e:
             curses.nocbreak()
             curses.echo()
             curses.endwin()
-            exit()
+            raise e
