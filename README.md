@@ -65,15 +65,35 @@ To do this, you write a node in the `your_solution` package
 
 ```mermaid
 graph TD;
-sol["spinsolution"]
-tng["spinnything"]
-sol -- /predictedpos --> tng;
-sol -- /measuredpos --> tng;
-sol -- /measuredvel --> tng;
+sol("spinsolution")
+tng("spinnything")
+sol == /predictedpos ==> tng;
+sol == /measuredpos ==> tng;
+sol == /measuredvel ==> tng;
 ```
 
+The messages are all of type `ArrayMsg = std_msgs::msg::Float64MultiArray`, the 0th entry is the x coordinate, the 1st entry is the y coordinate.
+
+In order to predict the location of the target: use the following algorithm:
+
+# $\vec{x_p} = \vec{x} + \Delta t \vec{v}$
+
+Where $x_p$ is the predicted position vector, $x$ and $v$ are previously measured position and velocity, and $\Delta t$ is the change in time since the measurement was received by your node.
 
 ## What you need to do:
 
-### Part 1 (optional)
+### Part 1 (Optional)
 
+Create a node (the code is set up for you in `spin_slow_update.cpp` and `spin_slow_update.h`) that takes the measured position and immediately republishes it to the predicted postion. The result should look like this:
+
+https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/f2442860-be49-497f-ae65-edf4afb2cc2c
+
+### Part 2 (Required)
+
+Create a node (the code is set up for you in `spin_sol.cpp` and `spin_sol.h`) that predicts the position of the target (using the algorithm above) and publishes it more frequently than the measurements. It should use a rclcpp wall timer callback to do this. The final product should look like this:
+
+https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/fbbb44d5-1d27-4c2e-972b-b7749a5c3232
+
+### Submission Directions
+
+Commit your completed code for Part 2 (and optionally Part 1) to this github repo, and submit it if that's possible (IDK how GH classroom works)
