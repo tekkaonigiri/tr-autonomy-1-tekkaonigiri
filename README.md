@@ -7,7 +7,7 @@ In this module you will be given regularly measured position and velocity of a t
 
 The below video shows what the tracker output should look like. The target is represented by `//` and the estimate is represented by `\\`. When they coincide, they are represented by `╳╳`
 
-https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/2f9e1f60-66f7-47f5-a5de-5a473507371d
+https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/c09eebcf-4f47-490b-9f65-17ddb58e281f
 
 ## Getting Started
 
@@ -15,6 +15,7 @@ First you have to set up a conda environment for the UI/data node, called *spinn
 
 ```bash
 conda env create -f src/spinnything/environment.yml
+conda activate spinnything
 ```
 
 Next you have to build the packages. Source the setup file from your ros installation (typically in `/opt/ros/humble/setup.bash`) in the shell you are building in.
@@ -27,7 +28,7 @@ ros2 run spinnything spinnything
 
 The output should look like the following. Notice the predicted position is not moving, 
 
-https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/a562bd09-c33b-44f0-9518-a1e047f7178b
+https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/c80cfce8-6c66-4b9f-a2fd-f210406cc211
 
 ## Architecture
 
@@ -86,13 +87,13 @@ Where $x_p$ is the predicted position vector, $x$ and $v$ are previously measure
 
 Create a node (the code is set up for you in `spin_slow_update.cpp` and `spin_slow_update.h`) that takes the measured position and immediately republishes it to the predicted postion. The result should look like this:
 
-https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/f2442860-be49-497f-ae65-edf4afb2cc2c
+https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/2b949c8f-c465-4124-879e-83cc3d86424f
 
 ### Part 2 (Required)
 
 Create a node (the code is set up for you in `spin_sol.cpp` and `spin_sol.h`) that predicts the position of the target (using the algorithm above) and publishes it more frequently than the measurements. It should use a rclcpp wall timer callback to do this. The final product should look like this:
 
-https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/fbbb44d5-1d27-4c2e-972b-b7749a5c3232
+https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/c09eebcf-4f47-490b-9f65-17ddb58e281f
 
 ### Submission Directions
 
