@@ -66,11 +66,11 @@ To do this, you write a node in the `your_solution` package
 
 ```mermaid
 graph TD;
-sol("spinsolution")
+sol("yoursolution")
 tng("spinnything")
 sol == /predictedpos ==> tng;
-sol == /measuredpos ==> tng;
-sol == /measuredvel ==> tng;
+tng == /measuredpos ==> sol;
+tng == /measuredvel ==> sol;
 ```
 
 The messages are all of type `ArrayMsg = std_msgs::msg::Float64MultiArray`, the 0th entry is the x coordinate, the 1st entry is the y coordinate.
