@@ -11,12 +11,11 @@ https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/c09eebcf-4f4
 
 ## Getting Started
 
-First you have to set up a conda environment for the UI/data node, called *spinnything*.
+Don't use conda. If it is activated in your shell use conda deactivate until there is no environment specified at the left. Then `pip install numpy`
 
-```bash
-conda env create -f src/spinnything/environment.yml
-conda activate spinnything
-```
+Make sure you [have colcon installed](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#:~:text=sudo%20apt%20install%20python3%2Dcolcon%2Dcommon%2Dextensions).
+
+*Note:*	
 
 Next you have to build the packages. Source the setup file from your ros installation (typically in `/opt/ros/humble/setup.bash`) in the shell you are building in.
 Then at the root of this git repo, run `colcon build`. Finally, run `source install/setup.bash`. Those last 2 commands are run every time you want to rebuild your solution.
