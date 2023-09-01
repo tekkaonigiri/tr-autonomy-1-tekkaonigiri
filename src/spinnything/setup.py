@@ -24,10 +24,5 @@ setup(
         'console_scripts': [
             'spinnything = spinnything.spinnything:main'
         ],
-    },
-    options={
-        'build_scripts': {
-            'executable': os.path.expanduser('~/miniconda3/envs/spinnything/bin/python3'),
-        },
     }
 )
