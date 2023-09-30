@@ -76,7 +76,7 @@ The messages are all of type `ArrayMsg = std_msgs::msg::Float64MultiArray`, the 
 
 In order to predict the location of the target: use the following algorithm:
 
-# $\vec{x_p} = \vec{x} + \Delta t \vec{v}$
+$\vec{x_p} = \vec{x} + \Delta t \vec{v}$
 
 Where $x_p$ is the predicted position vector, $x$ and $v$ are previously measured position and velocity, and $\Delta t$ is the change in time since the measurement was received by your node.
 
