@@ -1,6 +1,8 @@
 # TR-CV-1
 First Training Module for TR CV Recruits
 
+[![CV Training Resources](https://img.shields.io/badge/CV-%20Training%20Resources-eac817?labelColor=2a77a2&style=for-the-badge)](https://github.com/Triton-Robotics-Training/TR-CV-0/blob/main/resources.md)
+
 ## Task Overview
 
 In this module you will be given regularly measured position and velocity of a target to track. However, these measurements will only be published every 1.5 seconds, so it is your job to estimate the intermediate positions.
@@ -11,7 +13,7 @@ https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/c09eebcf-4f4
 
 ## Getting Started
 
-Don't use conda. If it is activated in your shell use conda deactivate until there is no environment specified at the left. Then `pip install numpy`
+Install numpy on your system python 3: `pip install numpy`
 
 Make sure you [have colcon installed](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#:~:text=sudo%20apt%20install%20python3%2Dcolcon%2Dcommon%2Dextensions).
 
