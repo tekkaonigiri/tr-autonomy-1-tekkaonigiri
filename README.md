@@ -5,22 +5,33 @@ First Training Module for TR CV Recruits
 
 ## Task Overview
 
-In this module you will be given regularly measured position and velocity of a target to track. However, these measurements will only be published every 1.5 seconds, so it is your job to estimate the intermediate positions.
+This module works with [publishers and subscribers](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html). A quick summary is that publishers can publish data to a topic (such as /measuredpos), and subscribers will receive that data.  
+In this module, you will have available to you a topic that publishes the measured position and velocity of a target moving around a circle in 1.5 second intervals. Your task is to subscribe to the published data (part 1) and publish to your custom topic your predictions of where the data will be (part 2).
 
-The below video shows what the tracker output should look like. The target is represented by `//` and the estimate is represented by `\\`. When they coincide, they are represented by `╳╳`
+The below video shows what the tracker output should look like. The target is represented by `//` and our estimate is represented by `\\`. When they coincide, they are represented by `╳╳`
 
 https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/c09eebcf-4f47-490b-9f65-17ddb58e281f
 
 ## Getting Started
 
-Install numpy on your system python 3: `pip install numpy`
-
-Make sure you [have colcon installed](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#:~:text=sudo%20apt%20install%20python3%2Dcolcon%2Dcommon%2Dextensions).
-
-*Note:*	
-
+[Workspaces](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html) are directories for ROS2 packages. Start by opening a terminal and creating a training workspace directory  
+```
+mkdir training_ws
+cd training_ws
+```
+Then, clone this github repository into the workspace.
+```
+git clone https://github.com/Triton-Robotics-Training/TR-CV-1.git
+```
 Next you have to build the packages. Source the setup file from your ros installation (typically in `/opt/ros/humble/setup.bash`) in the shell you are building in.
-Then at the root of this git repo, run `colcon build`. Finally, run `source install/setup.bash`. Those last 2 commands are run every time you want to rebuild your solution.
+Then at the root of this git repo, run `colcon build`, this generates an overlay with your packages. You then have to open a new terminal, navigate to your workspace directory, and `source install/setup.bash` to source your overlay. This set of commands commands are run every time you want to rebuild your solution. [Reference](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html)
+```
+source /opt/ros/humble/setup.bash
+colcon build
+NEW_TERMINAL
+cd training_ws
+source install/setup.bash
+```
 
 Finally, you can run the *spinnything* node which makes the target visualization, publishes the tracking data, and listens for the predicted position.
 ```bash
@@ -74,7 +85,7 @@ tng == /measuredpos ==> sol;
 tng == /measuredvel ==> sol;
 ```
 
-The messages are all of type `ArrayMsg = std_msgs::msg::Float64MultiArray`, the 0th entry is the x coordinate, the 1st entry is the y coordinate.
+Basically, you listen to /measuredpos and /measuredvel from spinnything. Then, using that data you make predictions to /predictedpos, which spinnything subscribes to and updates the tracker accordingly. The messages are all of type `ArrayMsg = std_msgs::msg::Float64MultiArray`, the 0th entry is the x coordinate, the 1st entry is the y coordinate.
 
 In order to predict the location of the target: use the following algorithm:
 
@@ -86,7 +97,7 @@ Where $x_p$ is the predicted position vector, $x$ and $v$ are previously measure
 
 ### Part 1 (Optional)
 
-Create a node (the code is set up for you in `spin_slow_update.cpp` and `spin_slow_update.h`) that takes the measured position and immediately republishes it to the predicted postion. The result should look like this:
+Create a [node](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html) (the code is set up for you in `spin_slow_update.cpp` and `spin_slow_update.h`) that takes the measured position and immediately republishes it to the predicted postion. The result should look like this:
 
 https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/2b949c8f-c465-4124-879e-83cc3d86424f
 
