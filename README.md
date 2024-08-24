@@ -14,21 +14,22 @@ https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/c09eebcf-4f4
 
 ## Getting Started
 
-[Workspaces](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html) are directories for ROS2 packages. Start by opening a terminal and creating a training workspace directory  
+[Workspaces](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html) are directories for ROS2 packages. Start by opening a terminal and creating a training workspace directory for your ROS2 training packages. 
 ```
-mkdir training_ws
-cd training_ws
+mkdir training_ws/src
+cd training_ws/src
 ```
 Then, clone this github repository into the workspace.
 ```
 git clone https://github.com/Triton-Robotics-Training/TR-CV-1.git
 ```
-Next you have to build the packages. Source the setup file from your ros installation (typically in `/opt/ros/humble/setup.bash`) in the shell you are building in.
-Then at the root of this git repo, run `colcon build`, this generates an overlay with your packages. You then have to open a new terminal, navigate to your workspace directory, and `source install/setup.bash` to source your overlay. This set of commands commands are run every time you want to rebuild your solution. [Reference](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html)
+Next you have to build the packages. Source the root setup file from your ros installation (typically in `/opt/ros/humble/setup.bash`) in the shell you are building in.
+Then at the root of this workspace, run `colcon build`, this generates an overlay with your packages. You then have to open a new terminal, navigate to your workspace directory, and `source install/setup.bash` to source your overlay. This set of commands commands are run every time you setup a new package. [Reference](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html)
 ```
+cd ../..
 source /opt/ros/humble/setup.bash
 colcon build
-NEW_TERMINAL
+OPEN_NEW_TERMINAL
 cd training_ws
 source install/setup.bash
 ```
@@ -41,6 +42,8 @@ ros2 run spinnything spinnything
 The output should look like the following. Notice the predicted position is not moving, 
 
 https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/c80cfce8-6c66-4b9f-a2fd-f210406cc211
+
+Whenever you make file changes, all you have to do is run colcon build again, and run again:
 
 ## Architecture
 
