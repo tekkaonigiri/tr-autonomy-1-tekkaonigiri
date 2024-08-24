@@ -35,6 +35,8 @@ cd training_ws
 source install/setup.bash
 ```
 
+If `rosdep install` gives you the error: "When using Python >= 3.11, PEP 668 compliance requires you to allow pip to install alongside externally managed packages using the 'break-system-packages' option." It simply means that users must allow pip to install packages system-wide to avoid system-breaking changes. You can either fix this by using a [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/) or by setting the environment variable `PIP_BREAK_SYSTEM_PACKAGES=1` before running commands.
+
 Finally, you can run the *spinnything* node which makes the target visualization, publishes the tracking data, and listens for the predicted position.
 ```bash
 ros2 run spinnything spinnything
