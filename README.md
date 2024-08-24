@@ -26,7 +26,7 @@ git clone https://github.com/Triton-Robotics-Training/TR-CV-1.git
 Next you have to build the packages. Source the root setup file from your ros installation (typically in `/opt/ros/humble/setup.bash`) in the shell you are building in.
 Then at the root of this workspace, run `colcon build`, this generates an overlay with your packages. You then have to open a new terminal, navigate to your workspace directory, and `source install/setup.bash` to source your overlay. This set of commands commands are run every time you setup a new package. [Reference](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html)
 ```
-cd ../..
+cd ..
 source /opt/ros/humble/setup.bash
 colcon build
 OPEN_NEW_TERMINAL
