@@ -43,7 +43,7 @@ The output should look like the following. Notice the predicted position is not 
 
 https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/c80cfce8-6c66-4b9f-a2fd-f210406cc211
 
-Whenever you make file changes, all you have to do is run colcon build again, and run again:
+Whenever you make file changes, all you have to do is run colcon build and run the package again:
 
 ## Architecture
 
