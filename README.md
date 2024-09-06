@@ -14,6 +14,16 @@ https://github.com/Triton-Robotics-Training/TR-CV-1/assets/33632547/c09eebcf-4f4
 
 ## Getting Started
 
+Next you have to build the packages. 2 tools we use for building packages are [rosdep](https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Rosdep.html) and [colcon](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html). To install them into your system, start by running these commands:
+```
+# install colcon
+sudo apt install python3-colcon-common-extensions
+# install rosdep
+apt-get install python3-rosdep
+# initialize rosdep (only need to do this once)
+sudo rosdep init
+rosdep update
+```
 [Workspaces](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html) are directories for ROS2 packages. Start by opening a terminal and creating a training workspace directory for your ROS2 training packages. 
 ```
 mkdir training_ws/src
@@ -23,7 +33,7 @@ Then, clone this github repository into the workspace.
 ```
 git clone https://github.com/Triton-Robotics-Training/TR-CV-1.git
 ```
-Next you have to build the packages. Source the root setup file from your ros installation (typically in `/opt/ros/humble/setup.bash`) in the shell you are building in.
+Source the root setup file from your ros installation (typically in `/opt/ros/humble/setup.bash`) in the shell you are building in.
 Then at the root of this workspace, first isntall any necessary dependencies using [rosdep](https://docs.ros.org/en/humble/Tutorials/Intermediate/Rosdep.html), then run `colcon build`. This generates an overlay with your packages. You then have to open a new terminal, navigate to your workspace directory, and `source install/setup.bash` to source your overlay. This set of commands commands are run every time you setup a new package. [Reference](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html)
 ```
 cd ..
