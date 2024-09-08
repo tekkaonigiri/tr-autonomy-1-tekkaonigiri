@@ -31,7 +31,7 @@ git clone https://github.com/Triton-Robotics-Training/TR-Autonomy-1.git
 Source the root setup file from your ros installation (typically in `/opt/ros/humble/setup.bash`) in the shell you are building in.
 Then at the root of this workspace, first isntall any necessary dependencies using [rosdep](https://docs.ros.org/en/humble/Tutorials/Intermediate/Rosdep.html), then run `colcon build`. This generates an overlay with your packages. You then have to open a new terminal, navigate to your workspace directory, and `source install/setup.bash` to source your overlay. These set of commands commands are run every time you setup a new package. [Reference](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html)
 ```
-cd TR-Autonomy-1
+cd TR-Autonomy-1/
 source /opt/ros/humble/setup.bash
 rosdep install -i --from-path src --rosdistro humble -y
 colcon build
